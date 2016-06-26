@@ -8,6 +8,9 @@ awesome_wm:
 terminal:
   cmd: urxvtc
 
+web_browser:
+  cmd: google-chrome-stable
+
 features:
   - unclutter
 
