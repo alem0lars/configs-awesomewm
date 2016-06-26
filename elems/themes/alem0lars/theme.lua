@@ -1,17 +1,21 @@
+-- Based on Powerarrow Darker Awesome by copycat-killer.
 
---[[
-                                             
-     Powerarrow Darker Awesome WM config 2.0 
-     github.com/copycat-killer               
-                                             
---]]
+
+<% define_locals do
+  variable :"awesome_wm.theme.name", type: :string, as: :theme_name
+
+  variable :"fonts.main.name", type: :string, as: :font_name
+  variable :"fonts.main.size", type: :int,    as: :font_size
+end -%>
+
 
 theme                               = {}
 
-themes_dir                          = os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-darker"
+themes_dir                          = awful.util.getdir("config") .. "/themes/<%= local! :theme_name %>"
+
 theme.wallpaper                     = themes_dir .. "/wall.png"
 
-theme.font                          = "Terminus 9"
+theme.font                          = "<%= local! :font_name %> <%= local! :font_size %>"
 theme.fg_normal                     = "#DDDDFF"
 theme.fg_focus                      = "#F0DFAF"
 theme.fg_urgent                     = "#CC9393"
@@ -79,3 +83,6 @@ theme.tasklist_maximized_horizontal = ""
 theme.tasklist_maximized_vertical   = ""
 
 return theme
+
+
+-- vim: set filetype=eruby.lua :

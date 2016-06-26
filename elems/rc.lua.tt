@@ -30,16 +30,17 @@ local lain = require("lain")
 
 -- Custom utilities.
 local run   = require("utils/run")
-local quake = require("utils/quake")
+local quake = require("quake")
+local menugen = require("menugen")
 
 -- Variables ───────────────────────────────────────────────────────────────────
 
 local modkey = "Mod4"
 local altkey = "Mod1"
 
-local terminal_cmd = <%= local! :terminal_cmd %>
+local terminal_cmd = "<%= local! :terminal_cmd %>"
 
-local web_browser_cmd = <%= local! :web_brower_cmd %>
+local web_browser_cmd = "<%= local! :web_brower_cmd %>"
 
 local editor_name = os.getenv("EDITOR") or "nvim" or "vim" or "vi" or "nano"
 local editor_cmd  = terminal_cmd .. " -e " .. editor_name
@@ -136,7 +137,7 @@ local awesome_menu = {
   { "quit",        awesome.quit }
 }
 
-local menu_items = require("menugen").build_menu()
+local menu_items = menugen.build_menu()
 table.insert(menu_items, 0, { "awesome", awesome_menu, beautiful.awesome_icon })
 table.insert(menu_items, 0, { "open terminal", terminal_cmd })
 
@@ -494,8 +495,14 @@ client.connect_signal("manage", function (c, startup)
   end
 end)
 
+-- No border for maximized or single clients
 client.connect_signal("focus", function(c)
-  c.border_color = beautiful.border_focus
+  if c.maximized_horizontal == true and c.maximized_vertical == true then
+    c.border_width = 0
+  elseif #awful.client.visible(mouse.screen) > 1 then
+    c.border_width = beautiful.border_width
+    c.border_color = beautiful.border_focus
+  end
 end)
 
 client.connect_signal("unfocus", function(c)
@@ -509,7 +516,7 @@ run.once("urxvtd")
 <% end -%>
 
 <% if has_feature? :unclutter %>
-run_once("unclutter -root")
+run.once("unclutter -root")
 <% end -%>
 
 -- ─────────────────────────────────────────────────────────────────────────────

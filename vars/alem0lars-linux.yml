@@ -11,6 +11,11 @@ terminal:
 web_browser:
   cmd: google-chrome-stable
 
+fonts:
+  main:
+    name: PragmataPro
+    size: 11
+
 features:
   - unclutter
 

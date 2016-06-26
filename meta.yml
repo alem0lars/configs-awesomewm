@@ -2,7 +2,7 @@ commands:
 
   - type: git_sync
     repo: 'https://github.com/copycat-killer/lain'
-    dst: "<%= get_var! 'awesome_wm.base_dir', type: :directory %>/lein"
+    dst: "<%= get_var! 'awesome_wm.base_dir', type: :directory %>/lain"
     only:
       features:
         - awesome_wm
