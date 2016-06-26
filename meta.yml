@@ -1,7 +1,7 @@
 commands:
 
-  - type: sync
-    repo: 'git:https:copycat-killer/lain'
+  - type: git_sync
+    repo: 'https://github.com/copycat-killer/lain'
     dst: "<%= get_var! 'awesome_wm.base_dir', type: :directory %>/lein"
     only:
       features:
