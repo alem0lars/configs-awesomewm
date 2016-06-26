@@ -1,0 +1,15 @@
+# => inherits: generic <= #
+
+
+awesome_wm:
+  theme:
+    name: alem0lars
+
+terminal:
+  cmd: urxvtc
+
+features:
+  - unclutter
+
+
+# vim: set filetype=yaml :

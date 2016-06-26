@@ -1,8 +1,17 @@
+commands:
+
+  - type: sync
+    repo: 'git:https:copycat-killer/lain'
+    dst: "<%= get_var! 'awesome_wm.base_dir', type: :directory %>/lein"
+    only:
+      features:
+        - awesome_wm
+
 elems:
   - src: elems/(awesomewm)$
     dst: ~/.<1>
     only:
       features:
-        - awesomewm
+        - awesome_wm
 
 # vim: set filetype=eruby.yaml :
