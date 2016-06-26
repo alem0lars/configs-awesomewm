@@ -8,8 +8,8 @@ commands:
         - awesome_wm
 
 elems:
-  - src: elems/(awesomewm)$
-    dst: ~/.<1>
+  - src: elems/(.+)$
+    dst: ~/.config/awesome/<1>
     only:
       features:
         - awesome_wm
