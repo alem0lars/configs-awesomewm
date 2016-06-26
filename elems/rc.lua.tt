@@ -1,10 +1,10 @@
 <% define_locals do
-  variable "terminal.cmd",    type: :string, as: :terminal_cmd
-  variable "web_browser.cmd", type: :string, as: :web_brower_cmd
+  variable :"terminal.cmd",    type: :string, as: :terminal_cmd
+  variable :"web_browser.cmd", type: :string, as: :web_brower_cmd
 
-  variable "awesome_wm.theme.name", type: :string, as: :theme_name
+  variable :"awesome_wm.theme.name", type: :string, as: :theme_name
 
-  computed(:with_urxvtd) { local!("terminal.cmd") =~ /^urxvtc/ }
+  computed(:with_urxvtd) { local!(:"terminal.cmd") =~ /^urxvtc/ }
 end -%>
 
 -- Requires ────────────────────────────────────────────────────────────────────
