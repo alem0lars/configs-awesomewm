@@ -40,12 +40,14 @@ local altkey = "Mod1"
 
 local terminal_cmd = "<%= local! :terminal_cmd %>"
 
-local web_browser_cmd = "<%= local! :web_brower_cmd %>"
+local browser = "<%= local! :web_brower_cmd %>"
 
-local editor_name = os.getenv("EDITOR") or "nvim" or "vim" or "vi" or "nano"
-local editor_cmd  = terminal_cmd .. " -e " .. editor_name
+local editor = os.getenv("EDITOR") or "nvim" or "vim" or "vi" or "nano"
+local editor_cmd  = terminal_cmd .. " -e " .. editor
 
 -- Available layouts.
+
+-- Tags information: tag names and default layouts.
 local layouts = {
   awful.layout.suit.max,
   awful.layout.suit.tile,
@@ -54,8 +56,6 @@ local layouts = {
   awful.layout.suit.fair.horizontal,
   awful.layout.suit.floating
 }
-
--- Tags information: tag names and default layouts.
 local tags_info = {
   names = {
     "1:ref",
@@ -126,7 +126,6 @@ end
 -- Tags ────────────────────────────────────────────────────────────────────────
 
 tags = {}
-
 for s = 1, screen.count() do
   tags[s] = awful.tag(tags_info.names, s, tags_info.layout)
 end
@@ -310,7 +309,7 @@ globalkeys = awful.util.table.join(
         end),
 
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
+    awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal_cmd) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
