@@ -4,7 +4,7 @@
 
   variable :"awesome_wm.theme.name", type: :string, as: :theme_name
 
-  computed(:with_urxvtd) { local!(:"terminal.cmd") =~ /^urxvtc/ }
+  computed(:with_urxvtd) { local!(:terminal_cmd) =~ /^urxvtc/ }
 end -%>
 
 -- Requires ────────────────────────────────────────────────────────────────────
