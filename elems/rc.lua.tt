@@ -56,20 +56,30 @@ local layouts = {
 }
 
 -- Tags information: tag names and default layouts.
-local tags_info = { names = {}, layout = {} }
-function tags_info.insert (name, layout) {
-  table.insert(tags_info[names], name)
-  table.insert(tags_info[layout], layout)
+local tags_info = {
+  names = {
+    "1:ref",
+    "2:main",
+    "3:main",
+    "4:supp",
+    "5:supp",
+    "6:supp",
+    "7:media",
+    "8:social",
+    "9:tmp"
+  },
+  layout = {
+    layouts[1],
+    layouts[3],
+    layouts[3],
+    layouts[1],
+    layouts[1],
+    layouts[1],
+    layouts[1],
+    layouts[1],
+    layouts[4]
+  }
 }
-tags_info.insert("1:ref",    layouts[1])
-tags_info.insert("2:main",   layouts[3])
-tags_info.insert("3:main",   layouts[3])
-tags_info.insert("4:supp",   layouts[1])
-tags_info.insert("5:supp",   layouts[1])
-tags_info.insert("6:supp",   layouts[1])
-tags_info.insert("7:media",  layouts[1])
-tags_info.insert("8:social", layouts[1])
-tags_info.insert("9:tmp",    layouts[4])
 
 -- Error handling ──────────────────────────────────────────────────────────────
 
