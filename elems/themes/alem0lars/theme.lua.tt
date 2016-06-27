@@ -5,7 +5,7 @@
   variable :"awesome_wm.theme.name", type: :string, as: :theme_name
 
   variable :"fonts.main.name", type: :string, as: :font_name
-  variable :"fonts.main.size", type: :int,    as: :font_size
+  variable :"fonts.main.size.medium", type: :int,    as: :font_size
 end -%>
 
 local awful = require("awful")

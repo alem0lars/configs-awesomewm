@@ -4,6 +4,15 @@
 awesome_wm:
   theme:
     name: alem0lars
+  widgets:
+    clock:
+    memory:
+    cpu:
+    temperature:
+    disk:
+    battery:
+    audio:
+    network:
 
 terminal:
   cmd: urxvtc
@@ -14,10 +23,13 @@ web_browser:
 fonts:
   main:
     name: PragmataPro
-    size: 11
+    size:
+      small:  10
+      medium: 12
 
 features:
   - unclutter
+  - pulseaudio
 
 
 # vim: set filetype=yaml :

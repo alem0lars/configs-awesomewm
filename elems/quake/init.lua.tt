@@ -33,7 +33,7 @@ function QuakeConsole:display()
    local i = 0
    for c in awful.client.iterate(function (c)
        -- c.name may be changed!
-			 return c.instance == self.name
+       return c.instance == self.name
    end, nil, self.screen)
    do
        i = i + 1
@@ -105,10 +105,10 @@ function QuakeConsole:new(config)
    conf.screen  = conf.screen  or capi.mouse.screen
 
    -- If width or height <= 1 this is a proportion of the workspace
-   wibox_height = conf.wibox_height or 18       -- statusbar weight
-   height       = conf.height       or 0.25	    -- height
-   width        = conf.width        or 1	      -- width
-   vert         = conf.vert         or "top"	  -- top, bottom or center
+   wibox_height = conf.wibox_height or 18       -- statusbar height
+   height       = conf.height       or 0.3      -- height
+   width        = conf.width        or 0.8      -- width
+   vert         = conf.vert         or "top"    -- top, bottom or center
    horiz        = conf.horiz        or "center" -- left, right or center
 
    -- Compute size
@@ -128,19 +128,19 @@ function QuakeConsole:new(config)
    capi.client.connect_signal("manage", function(c)
        if c.instance == console.name and c.screen == console.screen then
            console:display()
-			 end
+       end
    end)
    capi.client.connect_signal("unmanage", function(c)
        if c.instance == console.name and c.screen == console.screen then
            console.visible = false
-		   end
-		end)
+       end
+    end)
 
    -- "Reattach" currently running quake application. This is in case awesome is restarted.
    local reattach = capi.timer { timeout = 0 }
    reattach:connect_signal("timeout", function()
        reattach:stop()
-			 console:display()
+       console:display()
    end)
    reattach:start()
 
