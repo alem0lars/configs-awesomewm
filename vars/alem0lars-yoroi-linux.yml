@@ -1,0 +1,35 @@
+# => inherits: generic <= #
+
+
+awesome_wm:
+  theme:
+    name: alem0lars
+  widgets:
+    clock:
+    memory:
+    cpu:
+    temperature:
+    disk:
+    battery:
+    audio:
+    network:
+
+terminal:
+  cmd: urxvtc
+
+web_browser:
+  cmd: chromium
+
+fonts:
+  main:
+    name: Hack
+    size:
+      small:  11
+      medium: 13
+
+features:
+  - unclutter
+  - pulseaudio
+
+
+# vim: set filetype=yaml :
