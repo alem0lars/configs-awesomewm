@@ -13,6 +13,11 @@ awesome_wm:
     battery:
     audio:
     network:
+  font:
+    name: Hack
+    size:
+      popup: 9
+      main:  10
 
 terminal:
   cmd: urxvtc
@@ -20,12 +25,6 @@ terminal:
 web_browser:
   cmd: chromium
 
-fonts:
-  main:
-    name: Hack
-    size:
-      small:  11
-      medium: 13
 
 features:
   - unclutter

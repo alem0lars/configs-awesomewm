@@ -5,7 +5,7 @@
   variable :"awesome_wm.theme.name", type: :string, as: :theme_name
   variable :"awesome_wm.widgets",                   as: :widgets
 
-  variable :"fonts.main.size.small", type: :int, as: :font_size_small
+  variable :"awesome_wm.font.size.popup", type: :int, as: :font_size_popup
 
   computed(:with_urxvtd) { local!(:terminal_cmd) =~ /^urxvtc/ }
 end -%>
@@ -188,7 +188,7 @@ mytextclock = lain.widgets.abase({
   end
 })
 -- Calendar
-lain.widgets.calendar:attach(mytextclock, { font_size = <%= local! :font_size_small %> })
+lain.widgets.calendar:attach(mytextclock, { font_size = <%= local! :font_size_popup %> })
 <% end %>
 
 <% if local!(:widgets).keys.include? "memory" %>

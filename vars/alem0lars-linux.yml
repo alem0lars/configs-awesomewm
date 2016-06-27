@@ -13,19 +13,17 @@ awesome_wm:
     battery:
     audio:
     network:
+  font:
+    name: PragmataPro
+    size:
+      popup: 10
+      main:  12
 
 terminal:
   cmd: urxvtc
 
 web_browser:
   cmd: google-chrome-stable
-
-fonts:
-  main:
-    name: PragmataPro
-    size:
-      small:  10
-      medium: 12
 
 features:
   - unclutter
