@@ -779,5 +779,13 @@ run.once("urxvtd")
 run.once("unclutter -root")
 <% end -%>
 
+<% if has_feature? :pulseaudio %>
+run.once("start-pulseaudio-x11")
+<% end -%>
+
+<% if has_feature? :networkmanager %>
+run.once("nm-applet")
+<% end -%>
+
 -- ─────────────────────────────────────────────────────────────────────────────
 -- vim: set filetype=eruby.lua :

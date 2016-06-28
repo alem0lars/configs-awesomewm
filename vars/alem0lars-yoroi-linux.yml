@@ -29,6 +29,7 @@ web_browser:
 features:
   - unclutter
   - pulseaudio
+  - networkmanager
 
 
 # vim: set filetype=yaml :
