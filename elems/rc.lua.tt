@@ -787,5 +787,13 @@ run.once("start-pulseaudio-x11")
 run.once("nm-applet")
 <% end -%>
 
+<% if has_feature? :slack %>
+run.once("slack --disable-gpu")
+<% end -%>
+
+<% if has_feature? :copyq %>
+run.once("copyq")
+<% end -%>
+
 -- ─────────────────────────────────────────────────────────────────────────────
 -- vim: set filetype=eruby.lua :
