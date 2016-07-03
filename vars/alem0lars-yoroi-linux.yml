@@ -20,7 +20,7 @@ awesome_wm:
       main:  10
 
 terminal:
-  cmd: urxvtc
+  cmd: openterm
 
 web_browser:
   cmd: chromium-browser
