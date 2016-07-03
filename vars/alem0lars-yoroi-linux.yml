@@ -31,6 +31,6 @@ features:
   - networkmanager
   - slack
   - copyq
-
+  - zeal
 
 # vim: set filetype=yaml :

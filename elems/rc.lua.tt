@@ -795,5 +795,9 @@ run.once("slack --disable-gpu")
 run.once("copyq")
 <% end -%>
 
+<% if has_feature? :zeal %>
+run.once("zeal")
+<% end -%>
+
 -- ─────────────────────────────────────────────────────────────────────────────
 -- vim: set filetype=eruby.lua :
