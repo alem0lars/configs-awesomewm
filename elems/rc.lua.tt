@@ -799,5 +799,9 @@ run.once("copyq")
 run.once("zeal")
 <% end -%>
 
+<% if has_feature? :mega %>
+run.once("megasync")
+<% end -%>
+
 -- ─────────────────────────────────────────────────────────────────────────────
 -- vim: set filetype=eruby.lua :

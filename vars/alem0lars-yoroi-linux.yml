@@ -32,5 +32,6 @@ features:
   - slack
   - copyq
   - zeal
+  - mega
 
 # vim: set filetype=yaml :
