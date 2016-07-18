@@ -803,5 +803,9 @@ run.once("zeal")
 run.once("megasync")
 <% end -%>
 
+<% if has_feature? :redshift %>
+run.once("redshift")
+<% end -%>
+
 -- ─────────────────────────────────────────────────────────────────────────────
 -- vim: set filetype=eruby.lua :

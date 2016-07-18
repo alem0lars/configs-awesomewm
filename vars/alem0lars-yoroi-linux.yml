@@ -33,5 +33,6 @@ features:
   - copyq
   - zeal
   - mega
+  - redshift
 
 # vim: set filetype=yaml :
