@@ -7,6 +7,10 @@
 
   variable :"awesome_wm.font.size.popup", type: :int, as: :font_size_popup
 
+  variable :"keyboard.remap.caps_to_ctrl", type: :bool, default: false,
+           as: :keyboard_remap_caps_to_ctrl
+  variable :"keyboard.layout", type: :string?, as: :keyboard_layout
+
   computed(:with_urxvtd) { local!(:terminal_cmd) =~ /^urxvtc/ }
 end -%>
 
@@ -805,6 +809,14 @@ run.once("megasync")
 
 <% if has_feature? :redshift %>
 run.once("redshift")
+<% end -%>
+
+<% if local? :keyboard_layout %>
+run.once("setxkbmap <%= local! :keyboard_layout %>")
+<% end -%>
+
+<% if local! :keyboard_remap_caps_to_ctrl %>
+run.once("setxkbmap -option ctrl:nocaps")
 <% end -%>
 
 -- ─────────────────────────────────────────────────────────────────────────────

@@ -19,6 +19,11 @@ awesome_wm:
       popup: 9
       main:  10
 
+keyboard:
+  layout: us
+  remap:
+    caps_to_ctrl: true
+
 terminal:
   cmd: openterm
 
@@ -34,5 +39,6 @@ features:
   - zeal
   - mega
   - redshift
+
 
 # vim: set filetype=yaml :
