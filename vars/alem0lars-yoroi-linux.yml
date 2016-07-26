@@ -18,6 +18,8 @@ awesome_wm:
     size:
       popup: 9
       main:  10
+  wallpaper:
+    name: pancake.jpg
 
 keyboard:
   layout: us
@@ -39,6 +41,7 @@ features:
   - zeal
   - mega
   - redshift
+  - toggl
 
 
 # vim: set filetype=yaml :

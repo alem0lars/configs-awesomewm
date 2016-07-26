@@ -686,6 +686,12 @@ awful.rules.rules = {
       keys = clientkeys,
       buttons = clientbuttons
     }
+  },
+  { rule_any = { class = { "TogglDesktop", "Toggl Desktop" } },
+    properties = { floating = true }
+  },
+  { rule_any = { class = { "copyq", "Copyq" } },
+    properties = { floating = true }
   }
 }
 
@@ -809,6 +815,10 @@ run.once("megasync")
 
 <% if has_feature? :redshift %>
 run.once("redshift")
+<% end -%>
+
+<% if has_feature? :toggl %>
+run.once("toggl")
 <% end -%>
 
 <% if local? :keyboard_layout %>

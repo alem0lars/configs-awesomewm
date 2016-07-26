@@ -7,6 +7,8 @@
   variable :"awesome_wm.font.name",      type: :string, as: :font_name
   variable :"awesome_wm.font.size.main", type: :int,    as: :font_size
 
+  variable :"awesome_wm.wallpaper.name", type: :string, as: :wallpaper_name
+
   computed(:menu_width)    { local!(:font_size) * 30 }
   computed(:menu_height)   { (local!(:font_size) * 5.0/3.0).round }
   computed(:widget_height) { local! :menu_height }
@@ -18,7 +20,7 @@ theme                               = {}
 
 themes_dir                          = awful.util.getdir("config") .. "/themes/<%= local! :theme_name %>"
 
-theme.wallpaper                     = themes_dir .. "/wall.png"
+theme.wallpaper                     = themes_dir .. "/wallpapers/<%= local! :wallpaper_name %>"
 
 theme.font                          = "<%= local! :font_name %> <%= local! :font_size %>"
 theme.fg_normal                     = "#DDDDFF"
