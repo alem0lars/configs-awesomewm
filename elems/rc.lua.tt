@@ -57,36 +57,60 @@ local editor_cmd  = terminal_cmd .. " -e " .. editor
 -- Tags information: tag names and default layouts.
 local layouts = {
   awful.layout.suit.max,
-  awful.layout.suit.tile,
-  awful.layout.suit.tile.bottom,
-  awful.layout.suit.fair,
-  awful.layout.suit.fair.horizontal,
+  lain.layout.centerworkd,
+  lain.layout.centerhwork,
+  lain.layout.cascadetile,
+  lain.layout.centerfair,
+  lain.layout.termfair,
+  lain.layout.cascade,
   awful.layout.suit.floating
 }
 local tags_info = {
   names = {
-    "1:ref",
-    "2:main",
-    "3:main",
-    "4:supp",
-    "5:supp",
-    "6:supp",
-    "7:media",
-    "8:social",
-    "9:tmp"
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9"
   },
   layout = {
     layouts[1],
-    layouts[3],
-    layouts[3],
     layouts[1],
     layouts[1],
     layouts[1],
     layouts[1],
     layouts[1],
-    layouts[4]
+    layouts[1],
+    layouts[1],
+    layouts[1]
   }
 }
+
+-- Layouts configuration.
+lain.layout.termfair.nmaster = 4
+lain.layout.termfair.ncol = 2
+
+lain.layout.centerfair.nmaster = 3
+lain.layout.centerfair.ncol = 3
+
+lain.layout.cascade.cascade_offset_x = 48
+lain.layout.cascade.cascade_offset_y = 16
+lain.layout.cascade.nmaster = 4
+
+lain.layout.cascadetile.cascade_offset_x = 1
+lain.layout.cascadetile.cascade_offset_y = 24
+lain.layout.cascadetile.extra_padding = 4
+lain.layout.cascadetile.nmaster = 4
+lain.layout.cascadetile.ncol = 2
+
+lain.layout.centerwork.top_left = 3
+lain.layout.centerwork.top_right = 2
+lain.layout.centerwork.bottom_left = 1
+lain.layout.centerwork.bottom_right = 0
 
 -- Error handling ──────────────────────────────────────────────────────────────
 

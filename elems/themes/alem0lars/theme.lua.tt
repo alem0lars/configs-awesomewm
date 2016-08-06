@@ -18,6 +18,7 @@ local awful = require("awful")
 
 theme                               = {}
 
+theme.lain_icons_dir                = awful.util.getdir("config") .. "/lain/icons/layout/default/"
 themes_dir                          = awful.util.getdir("config") .. "/themes/<%= local! :theme_name %>"
 
 theme.wallpaper                     = themes_dir .. "/wallpapers/<%= local! :wallpaper_name %>"
@@ -88,6 +89,17 @@ theme.tasklist_disable_icon         = true
 theme.tasklist_floating             = ""
 theme.tasklist_maximized_horizontal = ""
 theme.tasklist_maximized_vertical   = ""
+
+theme.layout_termfair     = theme.lain_icons_dir .. "termfairw.png"
+theme.layout_centerfair   = theme.lain_icons_dir .. "centerfairw.png"
+theme.layout_cascade      = theme.lain_icons_dir .. "cascadew.png"
+theme.layout_cascadetile  = theme.lain_icons_dir .. "cascadetilew.png"
+theme.layout_centerwork   = theme.lain_icons_dir .. "centerworkw.png"
+theme.layout_centerhwork  = theme.lain_icons_dir .. "centerhworkw.png"
+theme.layout_centerworkd  = theme.lain_icons_dir .. "centerworkdw.png"
+theme.layout_uselessfair  = theme.lain_icons_dir .. "uselessfairw.png"
+theme.layout_uselesspiral = theme.lain_icons_dir .. "uselesspiralw.png"
+theme.layout_uselesstile  = theme.lain_icons_dir .. "uselesstilew.png"
 
 return theme
 
