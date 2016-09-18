@@ -14,20 +14,18 @@ awesome_wm:
     audio:
     network:
   font:
-    name: PragmataPro
+    name: Hack
     size:
-      popup: 10
-      main:  12
+      popup: 9
+      main:  10
+  wallpaper:
+    name: follow-the-leader.jpg
 
 terminal:
-  cmd: urxvtc
+  cmd: openterm
 
 web_browser:
-  cmd: google-chrome-stable
-
-features:
-  - unclutter
-  - pulseaudio
+  cmd: chromium-browser
 
 
 # vim: set filetype=yaml :

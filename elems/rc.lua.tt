@@ -6,12 +6,6 @@
   variable :"awesome_wm.widgets",                   as: :widgets
 
   variable :"awesome_wm.font.size.popup", type: :int, as: :font_size_popup
-
-  variable :"keyboard.remap.caps_to_ctrl", type: :bool, default: false,
-           as: :keyboard_remap_caps_to_ctrl
-  variable :"keyboard.layout", type: :string?, as: :keyboard_layout
-
-  computed(:with_urxvtd) { local!(:terminal_cmd) =~ /^urxvtc/ }
 end -%>
 
 -- Requires ────────────────────────────────────────────────────────────────────
@@ -803,55 +797,6 @@ client.connect_signal("unfocus", function(c)
   c.border_color = beautiful.border_normal
 end)
 
--- Autostart applications ──────────────────────────────────────────────────────
-
-<% if local? :with_urxvtd %>
-run.once("urxvtd")
-<% end -%>
-
-<% if has_feature? :unclutter %>
-run.once("unclutter -root")
-<% end -%>
-
-<% if has_feature? :pulseaudio %>
-run.once("start-pulseaudio-x11")
-<% end -%>
-
-<% if has_feature? :networkmanager %>
-run.once("nm-applet")
-<% end -%>
-
-<% if has_feature? :slack %>
-run.once("slack --disable-gpu")
-<% end -%>
-
-<% if has_feature? :copyq %>
-run.once("copyq")
-<% end -%>
-
-<% if has_feature? :zeal %>
-run.once("zeal")
-<% end -%>
-
-<% if has_feature? :mega %>
-run.once("megasync")
-<% end -%>
-
-<% if has_feature? :redshift %>
-run.once("redshift")
-<% end -%>
-
-<% if has_feature? :toggl %>
-run.once("toggl")
-<% end -%>
-
-<% if local? :keyboard_layout %>
-run.once("setxkbmap <%= local! :keyboard_layout %>")
-<% end -%>
-
-<% if local! :keyboard_remap_caps_to_ctrl %>
-run.once("setxkbmap -option ctrl:nocaps")
-<% end -%>
 
 -- ─────────────────────────────────────────────────────────────────────────────
 -- vim: set filetype=eruby.lua :

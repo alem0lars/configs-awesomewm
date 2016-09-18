@@ -21,27 +21,11 @@ awesome_wm:
   wallpaper:
     name: follow-the-leader.jpg
 
-keyboard:
-  layout: us
-  remap:
-    caps_to_ctrl: true
-
 terminal:
   cmd: openterm
 
 web_browser:
   cmd: chromium-browser
-
-features:
-  - unclutter
-  - pulseaudio
-  - networkmanager
-  - slack
-  - copyq
-  - zeal
-  - mega
-  - redshift
-  - toggl
 
 
 # vim: set filetype=yaml :
