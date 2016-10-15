@@ -1,6 +1,6 @@
 commands:
 
-  - type: git_sync
+  - type: sync
     repo: 'https://github.com/copycat-killer/lain'
     dst: "<%= get_var! 'awesome_wm.base_dir', type: :directory %>/lain"
     only: f?awesome_wm
