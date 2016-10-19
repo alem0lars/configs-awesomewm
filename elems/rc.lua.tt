@@ -8,7 +8,7 @@
   variable :"awesome_wm.font.size.popup", type: :int, as: :font_size_popup
 end -%>
 
--- Requires ────────────────────────────────────────────────────────────────────
+-- ───────────────────────────────────────────────────────────────── Requires ──
 
 -- Standard awesome library.
 local gears = require("gears")
@@ -34,7 +34,7 @@ local run   = require("utils/run")
 local quake = require("quake")
 local menugen = require("menugen")
 
--- Variables ───────────────────────────────────────────────────────────────────
+-- ──────────────────────────────────────────────────────────────── Variables ──
 
 local modkey = "Mod4"
 local altkey = "Mod1"
@@ -106,7 +106,7 @@ lain.layout.centerwork.top_right = 2
 lain.layout.centerwork.bottom_left = 1
 lain.layout.centerwork.bottom_right = 0
 
--- Error handling ──────────────────────────────────────────────────────────────
+-- ─────────────────────────────────────────────────────────── Error handling ──
 
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config).
@@ -135,12 +135,12 @@ do
   end)
 end
 
--- Theme ───────────────────────────────────────────────────────────────────────
+-- ──────────────────────────────────────────────────────────────────── Theme ──
 
 beautiful.init(awful.util.getdir("config") ..
                "/themes/<%= local! :theme_name %>/theme.lua")
 
--- Wallpaper ───────────────────────────────────────────────────────────────────
+-- ──────────────────────────────────────────────────────────────── Wallpaper ──
 
 if beautiful.wallpaper then
   for s = 1, screen.count() do
@@ -148,21 +148,21 @@ if beautiful.wallpaper then
   end
 end
 
--- Tags ────────────────────────────────────────────────────────────────────────
+-- ───────────────────────────────────────────────────────────────────── Tags ──
 
 tags = {}
 for s = 1, screen.count() do
   tags[s] = awful.tag(tags_info.names, s, tags_info.layout)
 end
 
--- Quake ───────────────────────────────────────────────────────────────────────
+-- ──────────────────────────────────────────────────────────────────── Quake ──
 
 local quakeconsole = {}
 for s = 1, screen.count() do
   quakeconsole[s] = quake({ app = terminal_cmd })
 end
 
--- Menu ────────────────────────────────────────────────────────────────────────
+-- ───────────────────────────────────────────────────────────────────── Menu ──
 
 local awesome_menu = {
   { "manual",      terminal_cmd .. " -e man awesome" },
@@ -190,7 +190,7 @@ local main_menu_launcher = awful.widget.launcher({
 -- Menubar configuration.
 menubar.utils.terminal = terminal_cmd -- Set terminal for apps that require it.
 
--- Wibox ───────────────────────────────────────────────────────────────────────
+-- ──────────────────────────────────────────────────────────────────── Wibox ──
 
 markup = lain.util.markup
 
@@ -200,7 +200,7 @@ spr = wibox.widget.textbox(' ')
 arrl_dl = separators.arrow_left(beautiful.bg_focus, "alpha")
 arrl_ld = separators.arrow_left("alpha", beautiful.bg_focus)
 
-<% if local!(:widgets).keys.include? "clock" %>
+<% if local!(:widgets).keys.include? :clock %>
 -- Textclock
 mytextclock = lain.widgets.abase({
   timeout  = 60,
@@ -213,7 +213,7 @@ mytextclock = lain.widgets.abase({
 lain.widgets.calendar:attach(mytextclock, { font_size = <%= local! :font_size_popup %> })
 <% end %>
 
-<% if local!(:widgets).keys.include? "memory" %>
+<% if local!(:widgets).keys.include? :memory %>
 memicon = wibox.widget.imagebox(beautiful.widget_mem)
 memwidget = lain.widgets.mem({
   settings = function()
@@ -222,7 +222,7 @@ memwidget = lain.widgets.mem({
 })
 <% end %>
 
-<% if local!(:widgets).keys.include? "cpu" %>
+<% if local!(:widgets).keys.include? :cpu %>
 cpuicon = wibox.widget.imagebox(beautiful.widget_cpu)
 cpuwidget = lain.widgets.cpu({
   settings = function()
@@ -231,7 +231,7 @@ cpuwidget = lain.widgets.cpu({
 })
 <% end %>
 
-<% if local!(:widgets).keys.include? "temperature" %>
+<% if local!(:widgets).keys.include? :temperature %>
 tempicon = wibox.widget.imagebox(beautiful.widget_temp)
 tempwidget = lain.widgets.temp({
   settings = function()
@@ -240,7 +240,7 @@ tempwidget = lain.widgets.temp({
 })
 <% end %>
 
-<% if local!(:widgets).keys.include? "disk" %>
+<% if local!(:widgets).keys.include? :disk %>
 fsicon = wibox.widget.imagebox(beautiful.widget_hdd)
 fswidget = lain.widgets.fs({
     settings  = function()
@@ -249,7 +249,7 @@ fswidget = lain.widgets.fs({
   })
 <% end %>
 
-<% if local!(:widgets).keys.include? "battery" %>
+<% if local!(:widgets).keys.include? :battery %>
 baticon = wibox.widget.imagebox(beautiful.widget_battery)
 batwidget = lain.widgets.bat({
   settings = function()
@@ -273,7 +273,7 @@ batwidget = lain.widgets.bat({
 })
 <% end %>
 
-<% if local!(:widgets).keys.include? "audio" %>
+<% if local!(:widgets).keys.include? :audio %>
 volicon = wibox.widget.imagebox(beautiful.widget_vol)
 <% if has_feature? :pulseaudio %>
 volumewidget = lain.widgets.pulseaudio({
@@ -311,7 +311,7 @@ volumewidget = lain.widgets.alsa({
 <% end %>
 <% end %>
 
-<% if local!(:widgets).keys.include? "network" %>
+<% if local!(:widgets).keys.include? :network %>
 neticon = wibox.widget.imagebox(beautiful.widget_net)
 neticon:buttons(awful.util.table.join(awful.button({ }, 1, function ()
   awful.util.spawn_with_shell(iptraf)
@@ -424,28 +424,28 @@ for s = 1, screen.count() do
   right_layout = wibox.layout.fixed.horizontal()
   if s == 1 then right_layout:add(wibox.widget.systray()) end
   right_layout:add(spr)
-  <% if local!(:widgets).keys.include? "audio" %>
+  <% if local!(:widgets).keys.include? :audio %>
   right_layout_add(volicon, volumewidget)
   <% end %>
-  <% if local!(:widgets).keys.include? "memory" %>
+  <% if local!(:widgets).keys.include? :memory %>
   right_layout_add(memicon, memwidget)
   <% end %>
-  <% if local!(:widgets).keys.include? "cpu" %>
+  <% if local!(:widgets).keys.include? :cpu %>
   right_layout_add(cpuicon, cpuwidget)
   <% end %>
-  <% if local!(:widgets).keys.include? "temperature" %>
+  <% if local!(:widgets).keys.include? :temperature %>
   right_layout_add(tempicon, tempwidget)
   <% end %>
-  <% if local!(:widgets).keys.include? "disk" %>
+  <% if local!(:widgets).keys.include? :disk %>
   right_layout_add(fsicon, fswidget)
   <% end %>
-  <% if local!(:widgets).keys.include? "battery" %>
+  <% if local!(:widgets).keys.include? :battery %>
   right_layout_add(baticon, batwidget)
   <% end %>
-  <% if local!(:widgets).keys.include? "network" %>
+  <% if local!(:widgets).keys.include? :network %>
   right_layout_add(neticon,netwidget)
   <% end %>
-  <% if local!(:widgets).keys.include? "clock" %>
+  <% if local!(:widgets).keys.include? :clock %>
   right_layout_add(mytextclock, spr)
   <% end %>
   right_layout_add(mylayoutbox[s])
