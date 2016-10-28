@@ -30,8 +30,6 @@ local menubar = require("menubar")
 local lain = require("lain")
 
 -- Custom utilities.
-local run   = require("utils/run")
-local quake = require("quake")
 local menugen = require("menugen")
 
 -- ──────────────────────────────────────────────────────────────── Variables ──
@@ -47,8 +45,6 @@ local editor = os.getenv("EDITOR") or "nvim" or "vim" or "vi" or "nano"
 local editor_cmd  = terminal_cmd .. " -e " .. editor
 
 -- Available layouts.
-
--- Tags information: tag names and default layouts.
 local layouts = {
   awful.layout.suit.max,
   lain.layout.centerworkd,
@@ -59,6 +55,8 @@ local layouts = {
   lain.layout.cascade,
   awful.layout.suit.floating
 }
+
+-- Tags information: tag names and default layouts.
 local tags_info = {
   names = {
     "1",
@@ -92,12 +90,12 @@ lain.layout.centerfair.nmaster = 3
 lain.layout.centerfair.ncol = 3
 
 lain.layout.cascade.cascade_offset_x = 24
-lain.layout.cascade.cascade_offset_y = 0
+lain.layout.cascade.cascade_offset_y = 100
 lain.layout.cascade.nmaster = 4
 
-lain.layout.cascadetile.cascade_offset_x = 0
-lain.layout.cascadetile.cascade_offset_y = 24
-lain.layout.cascadetile.extra_padding = 0
+lain.layout.cascadetile.cascade_offset_x = 1
+lain.layout.cascadetile.cascade_offset_y = 1
+lain.layout.cascadetile.extra_padding = 1
 lain.layout.cascadetile.nmaster = 4
 lain.layout.cascadetile.ncol = 2
 
@@ -159,7 +157,11 @@ end
 
 local quakeconsole = {}
 for s = 1, screen.count() do
-  quakeconsole[s] = quake({ app = terminal_cmd })
+  quakeconsole[s] = lain.util.quake({
+    app = "<%= local! :terminal_cmd %>",
+    argname = "--title %s",
+    wibox_height = 32
+  })
 end
 
 -- ───────────────────────────────────────────────────────────────────── Menu ──
@@ -253,7 +255,7 @@ fswidget = lain.widgets.fs({
 baticon = wibox.widget.imagebox(beautiful.widget_battery)
 batwidget = lain.widgets.bat({
   settings = function()
-    if bat_now.status ~= "N/A" then
+    if bat_now.perc ~= "N/A" then
       if bat_now.ac_status == 1 then
         widget:set_markup(" AC ")
         baticon:set_image(beautiful.widget_ac)
@@ -295,17 +297,19 @@ volumewidget = lain.widgets.pulseaudio({
 <% else %> <%# Fallback to ALSA %>
 volumewidget = lain.widgets.alsa({
   settings = function()
-    if volume_now.status == "off" then
-      volicon:set_image(beautiful.widget_vol_mute)
-    elseif tonumber(volume_now.level) == 0 then
-      volicon:set_image(beautiful.widget_vol_no)
-    elseif tonumber(volume_now.level) <= 50 then
-      volicon:set_image(beautiful.widget_vol_low)
-    else
-      volicon:set_image(beautiful.widget_vol)
-    end
+    if volume_now.status ~= nil and volume_now.level ~= nil then
+      if volume_now.status == "off" then
+        volicon:set_image(beautiful.widget_vol_mute)
+      elseif tonumber(volume_now.level) == 0 then
+        volicon:set_image(beautiful.widget_vol_no)
+      elseif tonumber(volume_now.level) <= 50 then
+        volicon:set_image(beautiful.widget_vol_low)
+      else
+        volicon:set_image(beautiful.widget_vol)
+      end
 
-    widget:set_text(" " .. volume_now.level .. "% ")
+      widget:set_text(" " .. volume_now.level .. "% ")
+    end
   end
 })
 <% end %>
