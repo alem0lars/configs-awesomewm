@@ -19,7 +19,7 @@ awesome_wm:
       popup: 9
       main:  10
   wallpaper:
-    name: follow-the-leader.jpg
+    name: powered-by-gentoo.jpg
 
 terminal:
   cmd: openterm
