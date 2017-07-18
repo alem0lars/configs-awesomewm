@@ -25,7 +25,7 @@ terminal:
   cmd: openterm
 
 web_browser:
-  cmd: firefox
+  cmd: chromium
 
 
 # vim: set filetype=yaml :
